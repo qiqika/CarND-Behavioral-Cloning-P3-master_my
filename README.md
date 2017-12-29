@@ -228,7 +228,7 @@ To augment the data set, I also flipped images and angles thinking that this wou
 ![alt text][image6]
 ![alt text][image7]
 
-etc...
+
 
 After the collection process, I had X number of data points. I then preprocessed this data by normalizing image_data = image_data/255.0 -0.5 for reducing overfit.
 
