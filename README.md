@@ -41,10 +41,10 @@ The goals / steps of this project are the following:
 
 [image1]: ./vitual_net_structure.png "Model Visualization"
 [image2]: ./flip_image3.png "Flipped Image"
-[image3]: ./center.jpg "center image"
-[image4]: ./left.jpg "left Image"
+[image3]: ./center.png "center image"
+[image4]: ./left.png "left Image"
 [image5]: ./right.png "right Image"
-[image6]: ./flip_image1.png "Flipped Image"
+[image6]: ./flip_image.png "Flipped Image"
 [image7]: ./flip_image2.png "Flipped Image"
 
 
@@ -191,7 +191,7 @@ At the end of the process, the vehicle is able to drive autonomously around the 
 The final model architecture (model.py lines 18-24) consisted of a convolution neural network with the following layers and layer sizes :
 
 |Layer (type)      |           Output Shape    |          Param # |  
-|:==================:|:=========================:|:=====================:|
+|:----------------:|:-------------------------:|:----------------:|
 |lambda_1 (Lambda)  |          (None, 160, 320, 3)  |     0      |   
 |cropping2d_1 (Cropping2D)  |  (None, 76, 320, 3) |       0       |  
 |conv2d_1 (Conv2D)      |      (None, 36, 158, 24)   |    1824    |  
