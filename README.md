@@ -41,9 +41,9 @@ The goals / steps of this project are the following:
 
 [image1]: ./vitual_net_structure.png "Model Visualization"
 [image2]: ./flip_image3.png "Flipped Image"
-[image3]: ./center.png "center image"
-[image4]: ./left.png "left Image"
-[image5]: ./right.png "right Image"
+[image3]: ./center.jpg "center image"
+[image4]: ./left.jpg "left Image"
+[image5]: ./right.jpg "right Image"
 [image6]: ./flip_image.png "Flipped Image"
 [image7]: ./flip_image2.png "Flipped Image"
 
