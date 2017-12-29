@@ -143,7 +143,7 @@ cropped_image = cropping_output([ X_train[1:2,:,:,:]])[0]
 print(cropped_image.shape)
 
 plt.imshow( cropped_image[0,:,:,:])
-'''
+
 import matplotlib.pyplot as plt
 
 ### print the keys contained in the history object
@@ -157,7 +157,7 @@ plt.ylabel('mean squared error loss')
 plt.xlabel('epoch')
 plt.legend(['training set', 'validation set'], loc='upper right')
 plt.show()
-
+'''
 #exit()
 
 
