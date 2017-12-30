@@ -39,13 +39,13 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/placeholder.png "Model Visualization"
-[image2]: ./examples/placeholder.png "Grayscaling"
-[image3]: ./examples/placeholder_small.png "Recovery Image"
-[image4]: ./examples/placeholder_small.png "Recovery Image"
-[image5]: ./examples/placeholder_small.png "Recovery Image"
-[image6]: ./examples/placeholder_small.png "Normal Image"
-[image7]: ./examples/placeholder_small.png "Flipped Image"
+[image1]: ./vitual_net_structure.png "Model Visualization"
+[image2]: ./flip_image3.png "Flipped Image"
+[image3]: ./center.jpg "center image"
+[image4]: ./left.jpg "left Image"
+[image5]: ./right.jpg "right Image"
+[image6]: ./flip_image.png "Flipped Image"
+[image7]: ./flip_image2.png "Flipped Image"
 
 
 ### Dependencies
@@ -190,29 +190,19 @@ At the end of the process, the vehicle is able to drive autonomously around the 
 
 The final model architecture (model.py lines 18-24) consisted of a convolution neural network with the following layers and layer sizes :
 
-Layer (type)                 Output Shape              Param #   
-=================================================================
-lambda_1 (Lambda)            (None, 160, 320, 3)       0         
-_________________________________________________________________
-cropping2d_1 (Cropping2D)    (None, 76, 320, 3)        0         
-_________________________________________________________________
-conv2d_1 (Conv2D)            (None, 36, 158, 24)       1824      
-_________________________________________________________________
-conv2d_2 (Conv2D)            (None, 16, 77, 36)        21636     
-_________________________________________________________________
-conv2d_3 (Conv2D)            (None, 6, 37, 48)         43248     
-_________________________________________________________________
-conv2d_4 (Conv2D)            (None, 4, 35, 64)         27712     
-_________________________________________________________________
-conv2d_5 (Conv2D)            (None, 2, 33, 64)         36928     
-_________________________________________________________________
-flatten_1 (Flatten)          (None, 4224)              0         
-_________________________________________________________________
-dense_1 (Dense)              (None, 100)               422500    
-_________________________________________________________________
-dense_2 (Dense)              (None, 50)                5050      
-_________________________________________________________________
-dense_3 (Dense)              (None, 1)                 51        
+|Layer (type)      |           Output Shape    |          Param # |  
+|:----------------:|:-------------------------:|:----------------:|
+|lambda_1 (Lambda)  |          (None, 160, 320, 3)  |     0      |   
+|cropping2d_1 (Cropping2D)  |  (None, 76, 320, 3) |       0       |  
+|conv2d_1 (Conv2D)      |      (None, 36, 158, 24)   |    1824    |  
+|conv2d_2 (Conv2D)      |      (None, 16, 77, 36)    |    21636 |    
+|conv2d_3 (Conv2D)      |      (None, 6, 37, 48)    |     43248 |    
+|conv2d_4 (Conv2D)     |       (None, 4, 35, 64)   |      27712 |    
+|conv2d_5 (Conv2D)     |       (None, 2, 33, 64)    |     36928 |    
+|flatten_1 (Flatten)   |       (None, 4224)       |       0    |     
+|dense_1 (Dense)      |        (None, 100)        |       422500    
+|dense_2 (Dense)       |       (None, 50)         |       5050   |   
+|dense_3 (Dense)     |         (None, 1)           |      51     |   
 
 
 Here is a visualization of the architecture (note: visualizing the architecture is optional according to the project rubric)
@@ -225,7 +215,7 @@ To capture good driving behavior, I first recorded two laps on track one using c
 
 ![alt text][image2]
 
-I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to change steer in specific situation. These images show what a recovery looks like starting from overlap lane :
+I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to change steer in specific situation. These images show what a recovery looks like starting from center camera,left camera and right camera :
 
 ![alt text][image3]
 ![alt text][image4]
@@ -238,7 +228,7 @@ To augment the data set, I also flipped images and angles thinking that this wou
 ![alt text][image6]
 ![alt text][image7]
 
-etc...
+
 
 After the collection process, I had X number of data points. I then preprocessed this data by normalizing image_data = image_data/255.0 -0.5 for reducing overfit.
 
