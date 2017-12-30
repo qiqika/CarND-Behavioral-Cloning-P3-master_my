@@ -46,6 +46,7 @@ The goals / steps of this project are the following:
 [image5]: ./right.jpg "right Image"
 [image6]: ./flip_image.png "Flipped Image"
 [image7]: ./flip_image2.png "Flipped Image"
+[image8]: ./loss.png "loss Image"
 
 
 ### Dependencies
@@ -232,6 +233,7 @@ To augment the data set, I also flipped images and angles thinking that this wou
 
 After the collection process, I had X number of data points. I then preprocessed this data by normalizing image_data = image_data/255.0 -0.5 for reducing overfit.
 
+![alt text][image8]
 
 I finally randomly shuffled the data set and put 20% of the data into a validation set. 
 
