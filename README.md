@@ -46,6 +46,7 @@ The goals / steps of this project are the following:
 [image5]: ./right.jpg "right Image"
 [image6]: ./flip_image.png "Flipped Image"
 [image7]: ./flip_image2.png "Flipped Image"
+[image8]: ./loss.png "loss Image"
 
 
 ### Dependencies
@@ -143,7 +144,7 @@ My final model consisted of the following layers(reference: nvidia self-drive mo
 
 ####2. Attempts to reduce overfitting in the model
 
-The model contains dropout layers in order to reduce overfitting (model.py lines 108).
+The model contains dropout layers in order to reduce overfitting (model.py lines 108 regular kernel_regularizer=regularizers.l2(0.0001)).
 
 Besides, cropping2d is used to avoid overfit and underfit. because overfit come from noise datas which include nonsense obejects for instance trees and other scenes, and too small feature datas will result underfit. thus, appropriate image train datas will help us.
 
@@ -232,6 +233,7 @@ To augment the data set, I also flipped images and angles thinking that this wou
 
 After the collection process, I had X number of data points. I then preprocessed this data by normalizing image_data = image_data/255.0 -0.5 for reducing overfit.
 
+![alt text][image8]
 
 I finally randomly shuffled the data set and put 20% of the data into a validation set. 
 
