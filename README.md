@@ -231,7 +231,7 @@ To augment the data set, I also flipped images and angles thinking that this wou
 
 
 
-After the collection process, I had X number of data points. I then preprocessed this data by normalizing image_data = image_data/255.0 -0.5 for reducing overfit.
+After the collection process, I had X number of data points. I then preprocessed this data by normalizing image_data = image_data/255.0 -0.5 for reducing overfit. as using kernel normal for regular weight, training loss and valid loss have the smooth change line .
 
 ![alt text][image8]
 
