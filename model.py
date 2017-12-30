@@ -145,6 +145,11 @@ cropped_image = cropping_output([ X_train[1:2,:,:,:]])[0]
 print(cropped_image.shape)
 plt.figure().add_subplot(111)
 plt.imshow( cropped_image[0,:,:,:])
+<<<<<<< HEAD
+=======
+
+import matplotlib.pyplot as plt
+>>>>>>> 35e2650f94d311d445a2005d4d8a3b5dc2740e7a
 
 
 '''
@@ -160,8 +165,12 @@ plt.ylabel('mean squared error loss')
 plt.xlabel('epoch')
 plt.legend(['training set', 'validation set'], loc='upper right')
 plt.show()
+<<<<<<< HEAD
 
 
+=======
+'''
+>>>>>>> 35e2650f94d311d445a2005d4d8a3b5dc2740e7a
 #exit()
 
 
