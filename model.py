@@ -86,7 +86,7 @@ from keras.layers import Cropping2D
 from keras.layers.normalization import BatchNormalization
 from keras.optimizers import SGD , Adam
 import keras.regularizers as regularizers
-#from keras import backend as K
+from keras import backend as K
 import keras
 #import matplotlib.pyplot as plt
 
@@ -105,51 +105,54 @@ model.add(Cropping2D(cropping=((60,24), (0,0))))
 #model.add(Convolution2D(3, 7, 7,subsample =(2,2),activation ='relu' ))
 
 
-model.add(Conv2D(24, (5, 5),strides =(2,2),activation ='relu'))
+model.add(Conv2D(24, (5, 5),strides =(2,2),activation ='elu', kernel_regularizer=regularizers.l2(0.0001)))
 #model.add(BatchNormalization(epsilon=1e-06, mode=0, axis=-1, momentum=0.9, weights=None, beta_init='zero', gamma_init='one'))
-model.add(Conv2D(36, (5, 5),strides =(2,2),activation ='relu' ))
-model.add(Conv2D(48, (5, 5),strides =(2,2),activation ='relu'))
+model.add(Conv2D(36, (5, 5),strides =(2,2),activation ='elu' , kernel_regularizer=regularizers.l2(0.0001)))
+model.add(Conv2D(48, (5, 5),strides =(2,2),activation ='elu', kernel_regularizer=regularizers.l2(0.0001)))
 
 
-model.add(Conv2D(64, (3, 3),strides =(1,1),activation ='relu' ))
+model.add(Conv2D(64, (3, 3),strides =(1,1),activation ='elu', kernel_regularizer=regularizers.l2(0.0001) ))
 
-model.add(Conv2D(64, (3, 3),strides =(1,1),activation ='relu' ))
+model.add(Conv2D(64, (3, 3),strides =(1,1),activation ='elu', kernel_regularizer=regularizers.l2(0.0001) ))
 
 
 
 model.add(Flatten())  
-model.add(Dense(100 ))
+model.add(Dense(100 , kernel_regularizer=regularizers.l2(0.0001)))
 
 #model.add(Activation('relu')), kernel_regularizer=regularizers.l2(1)
-model.add(Dense(50))
-model.add(Dense(10))
+model.add(Dense(50, kernel_regularizer=regularizers.l2(0.0001)))
+model.add(Dense(10, kernel_regularizer=regularizers.l2(0.0001)))
 #model.add(Activation('relu'))
-model.add(Dense(num_classes ))
+#model.add(Dense(num_classes, kernel_regularizer=regularizers.l2(1)))
 
-#model.add(Dense(1,activation= 'softmax'))
+model.add(Dense(1, kernel_regularizer=regularizers.l2(0.0001)))
 #model.add(Activation('softmax'))
 model.summary()
 
-#adam = Adam(lr=0.001, epsilon=1e-08)
-model.compile(loss='mse', optimizer = 'adam', metrics = ['accuracy'])
+adam = Adam(lr=0.001, epsilon=1e-08)
+model.compile(loss='mse', optimizer = adam, metrics = ['accuracy'])
 
-history_object = model.fit(X_train, y_train,epochs =10 ,validation_data=(X_test,y_test),  batch_size = 32,shuffle = True)
+history_object = model.fit(X_train, y_train,epochs =20 ,validation_data=(X_test,y_test),  batch_size = 32,shuffle = True)
 
 model.save('D:/windows_sim/model.h5')
+
+import matplotlib.pyplot as plt
 
 '''
 cropping_output = K.function([model.layers[1].input],[model.layers[1].output])
 cropped_image = cropping_output([ X_train[1:2,:,:,:]])[0]
 print(cropped_image.shape)
-
+plt.figure().add_subplot(111)
 plt.imshow( cropped_image[0,:,:,:])
-'''
-import matplotlib.pyplot as plt
 
+
+'''
 ### print the keys contained in the history object
 print(history_object.history.keys())
 
 ### plot the training and validation loss for each epoch
+plt.figure().add_subplot()
 plt.plot(history_object.history['loss'])
 plt.plot(history_object.history['val_loss'])
 plt.title('model mean squared error loss')
@@ -157,6 +160,7 @@ plt.ylabel('mean squared error loss')
 plt.xlabel('epoch')
 plt.legend(['training set', 'validation set'], loc='upper right')
 plt.show()
+
 
 #exit()
 
